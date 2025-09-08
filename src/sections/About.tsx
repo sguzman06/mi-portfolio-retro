@@ -14,7 +14,7 @@ export default function About(){
           <div>
             <p style={{maxWidth: 740, lineHeight: 1.7, marginTop: 6}}>
               Soy Sofi, estudiante de Ingeniería en Informática (UBA) con foco en
-              <strong> análisis de datos</strong> y <strong>gestión SAP</strong>.
+              <strong> análisis de datos</strong>.
               Me mueven la curiosidad, el diseño claro y la colaboración. Busco que cada entrega
               conecte con personas reales y aporte valor medible.
             </p>
@@ -23,7 +23,7 @@ export default function About(){
               Actualmente trabajo con <strong>SQL</strong>, <strong>Python</strong>,
               <strong> Power BI</strong>, <strong>Tableau</strong>, <strong>Excel avanzado</strong> y una base en
               <strong> SAP</strong>. Me interesan la <strong>IA aplicada</strong>, la <strong>visualización</strong> y el
-              <strong>UX de datos</strong>.
+              <strong> UX de datos</strong>.
             </p>
 
             {/* Chips de skills — reforzamos Data y ocultamos web */}
@@ -54,7 +54,7 @@ export default function About(){
 
             <h3 style={{marginTop:10, marginBottom:10}}>Pasantía · Pescar — Artech</h3>
             <p style={{marginTop:0, lineHeight:1.6}}>
-              Estoy completando una pasantía donde preparo un <strong>proyecto final</strong> que voy a publicar acá.
+              Estoy completando una pasantía donde preparo un <strong>proyecto final. </strong> 
               El enfoque: limpieza de datos, modelado, KPIs y un dashboard claro para tomar decisiones.
               (<em>En Experiencia</em> voy a detallar metodología y aprendizajes.)
             </p>
