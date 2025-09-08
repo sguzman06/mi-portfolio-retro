@@ -1,38 +1,44 @@
 import { useMemo } from "react";
 import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";     // <-- NUEVO
 import { useActiveSection } from "../hooks/useActiveSection";
+import { useLang } from "../hooks/useLang";        // <-- NUEVO
 
-const links = [
-  { href: "#inicio", label: "inicio" },
-  { href: "#sobre-mi", label: "sobre mi" },
-  { href: "#skills", label: "skills" },
-  { href: "#proyectos", label: "proyectos" },
-  { href: "#experiencia", label: "experiencia" },
-  { href: "#educacion", label: "educacion" },
-  { href: "#contactos", label: "contactos" },
-];
+const ids = ["inicio","sobre-mi","skills","proyectos","experiencia","educacion","contactos"];
 
 export default function NavBar(){
-  const ids = useMemo(() => links.map(l => l.href.slice(1)), []);
   const active = useActiveSection(ids);
+  const { t } = useLang();                         // <-- NUEVO
+
+  const links = useMemo(() => ([
+    { href:"#inicio",      k:"nav.inicio" },
+    { href:"#sobre-mi",    k:"nav.about" },
+    { href:"#skills",      k:"nav.skills" },
+    { href:"#proyectos",   k:"nav.projects" },
+    { href:"#experiencia", k:"nav.experience" },
+    { href:"#educacion",   k:"nav.education" },
+    { href:"#contactos",   k:"nav.contact" },
+  ]), []);
 
   return (
     <nav className="nav">
       <div className="container nav-inner">
-        {/* BRAND con logo */}
         <a href="#inicio" className="brand">
-          <img src="/brand/sg-logo.png" alt="Logo SG" className="logo" />
+          <img src="/brand/sg-logo.svg" className="logo" alt="Logo SG" />
           <span>sofia guzman</span>
         </a>
 
         <div className="menu">
           {links.map(l => (
-            <a key={l.href} href={l.href}
-               className={active === l.href.slice(1) ? "active" : ""}>
-              {l.label}
+            <a key={l.href} href={l.href} className={active === l.href.slice(1) ? "active" : ""}>
+              {t(l.k)}
             </a>
           ))}
-          <ThemeToggle />
+          {/* Acciones a la derecha */}
+          <div style={{display:"flex", gap:8, marginLeft:8}}>
+            <LanguageToggle />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </nav>
