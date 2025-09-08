@@ -1,0 +1,180 @@
+:root[data-theme="light"]{
+  --bg:#FFF7F2; --text:#1F1F20;
+  --primary:#FF6FAE; --secondary:#3EC8C8; --accent:#FFD166;
+  --surface:#FFFFFF; --muted:#6B7280; --shadow:0 6px 24px rgba(0,0,0,.06);
+}
+:root[data-theme="dark"]{
+  --bg:#0F1115; --text:#EEF0F5;
+  --primary:#FF9EC4; --secondary:#59DCDC; --accent:#FFDD88;
+  --surface:#161922; --muted:#9AA3B2; --shadow:0 10px 32px rgba(0,0,0,.35);
+}
+
+*{ box-sizing:border-box }
+html,body,#root{ height:100% }
+html{ scroll-behavior:smooth }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+.container{ width:min(1100px,92%); margin:0 auto; }
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--primary); color:#111;
+  border:none; border-radius:14px; padding:.75rem 1rem;
+  font-weight:700; letter-spacing:.2px; text-decoration:none;
+  box-shadow:var(--shadow); transition:transform .12s ease, filter .12s ease;
+}
+.btn:hover{ transform:translateY(-1px); filter:brightness(1.03) }
+.btn.ghost{ background:transparent; color:var(--text);
+  outline:1px solid color-mix(in oklab, var(--text) 20%, transparent) }
+
+.nav{
+  position:sticky; top:0; z-index:20; backdrop-filter: blur(8px);
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+  border-bottom:1px solid color-mix(in oklab, var(--text) 8%, transparent);
+}
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; height:64px }
+.brand{ font-family:"M PLUS Rounded 1c", Inter, sans-serif; font-weight:700; letter-spacing:.6px }
+.menu{ display:flex; gap:1rem; align-items:center }
+.menu a{ color:var(--text); text-decoration:none; font-weight:600; opacity:.9 }
+.menu a:hover{ opacity:1 }
+
+/* Hero más compacto y limpio */
+.hero{ padding: 72px 0 56px; position:relative; overflow:hidden; }
+.hero h1{
+  font-family:"M PLUS Rounded 1c", Inter, sans-serif;
+  font-size: clamp(34px, 5vw, 50px);
+  line-height: 1.06; margin: 0 0 10px;
+}
+.hero .subtitle{ color:var(--muted); margin: 0 0 12px; font-size: 17px }
+.hero .cta{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top: 16px }
+.btn{ padding:.6rem .9rem; border-radius:12px; font-weight:700 }
+
+
+
+
+.menu a{ 
+  color:var(--text); text-decoration:none; font-weight:600; opacity:.9;
+  padding:.35rem .6rem; border-radius:999px; 
+}
+.menu a:hover{ opacity:1 }
+.menu a.active{
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+}
+
+
+.section{ padding: 96px 0; }
+.section h2{ margin:0 0 12px; font-family: "M PLUS Rounded 1c", Inter, sans-serif; }
+
+
+.caret{
+  opacity:.8; margin-left:2px;
+  animation: blink 1s steps(2, jump-start) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Animaciones sutiles */
+/* Aparecen/desaparecen de forma sutil */
+@keyframes popFade {
+  0%   { opacity:0; transform: translate(0,0) scale(.7) }
+  12%  { opacity:.7 }
+  50%  { opacity:.9; transform: translate(6px,-4px) scale(1) }
+  88%  { opacity:.7 }
+  100% { opacity:0; transform: translate(0,0) scale(.7) }
+}
+
+
+/* posiciones + tiempos desfasados */
+.m1{ width:60px; height:26px; top:16%; left:8%;  animation: popFade 6s ease-in-out infinite .6s; }
+.m2{ width:20px; height:20px; top:42%; right:14%; animation: popFade 7s ease-in-out infinite 1.8s; }
+.m3{ width:18px; height:18px; top:72%; left:22%; animation: popFade 8s ease-in-out infinite 3.2s; }
+.m4{ width:22px; height:22px; top:30%; right:28%; animation: popFade 7.5s ease-in-out infinite 4.4s; }
+
+
+/* Dos columnas más separadas */
+.hero .grid{
+  display:grid; gap:40px; align-items:center;
+  grid-template-columns: minmax(0, 1.05fr) minmax(260px, .95fr);
+}
+@media (max-width: 980px){ .hero .grid{ grid-template-columns: 1fr } }
+
+/* Avatar más chico y suave */
+.avatar{
+  width: clamp(180px, 24vw, 260px);
+  aspect-ratio: 1/1; object-fit: cover;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  animation: floatY 10s ease-in-out infinite;
+}
+@keyframes floatY{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-5px) } }
+
+/* brand de logo*/
+
+.brand{ display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--text) }
+.logo{
+  width:22px; height:22px; display:block; opacity:.92;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.brand:hover .logo{ transform: rotate(-6deg) scale(1.06); opacity:1 }
+
+
+/* Hero: asegura stacking correcto */
+.hero{ position: relative; overflow: hidden; }
+.hero .container{ position: relative; z-index: 1; }  /* contenido por encima de los orbes */
+
+/* BASE orbes (una sola vez) */
+.orb{
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(14px);
+  opacity: .50;
+  pointer-events: none;
+  z-index: 0;            /* detrás del contenido, pero por delante del fondo */
+  will-change: transform;
+}
+
+/* Colores + tamaños + posiciones */
+.orb.pink{
+  background: var(--primary);
+  width: clamp(80px, 18vw, 120px);
+  height: clamp(80px, 18vw, 120px);
+  top: -8px; right: 4%;
+}
+.orb.turq{
+  background: var(--secondary);
+  width: clamp(130px, 24vw, 200px);
+  height: clamp(130px, 24vw, 200px);
+  bottom: -60px; left: -60px;
+}
+.orb.sun{
+  background: var(--accent);
+  width: clamp(80px, 18vw, 110px);
+  height: clamp(80px, 18vw, 110px);
+  top: 18%; left: 58%;
+}
+
+/* Movimiento sutil */
+@keyframes driftA{ 0%{transform:translate(0,0) scale(1)} 50%{transform:translate(10px,-8px) scale(1.02)} 100%{transform:translate(0,0) scale(1)} }
+@keyframes driftB{ 0%{transform:translate(0,0) scale(1)} 50%{transform:translate(-12px,8px) scale(.99)} 100%{transform:translate(0,0) scale(1)} }
+.orb.pink{ animation: driftA 9s ease-in-out infinite }
+.orb.turq{ animation: driftB 13s ease-in-out infinite }
+.orb.sun { animation: driftA 11s ease-in-out infinite }
+
+/* Micro-orbes (si los usás) */
+@keyframes popFade{
+  0%{ opacity:0; transform:translate(0,0) scale(.7) }
+  12%{ opacity:.6 }
+  50%{ opacity:.85; transform:translate(6px,-4px) scale(1) }
+  88%{ opacity:.6 }
+  100%{ opacity:0; transform:translate(0,0) scale(.7) }
+}
+.orb.micro{ filter: blur(8px); opacity:0; z-index:0 }
+.orb.micro.pink{ background:var(--primary) }
+.orb.micro.turq{ background:var(--secondary) }
+.orb.micro.sun { background:var(--accent) }
+.m1{ width:18px; height:18px; top:14%; left:6%;  animation: popFade 6.5s ease-in-out infinite .6s }
+.m2{ width:16px; height:16px; top:40%; right:12%; animation: popFade 7.2s ease-in-out infinite 1.6s }
+.m3{ width:14px; height:14px; top:70%; left:20%; animation: popFade 8s   ease-in-out infinite 2.8s }
+.m4{ width:20px; height:20px; top:28%; right:26%; animation: popFade 7.6s ease-in-out infinite 4s }
+@media (max-width:540px){ .m3,.m4{ display:none } }
