@@ -36,9 +36,34 @@ body{
 }
 .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:64px }
 .brand{ font-family:"M PLUS Rounded 1c", Inter, sans-serif; font-weight:700; letter-spacing:.6px }
+/* MENU DETALLES */ 
+
 .menu{ display:flex; gap:1rem; align-items:center }
 .menu a{ color:var(--text); text-decoration:none; font-weight:600; opacity:.9 }
 .menu a:hover{ opacity:1 }
+
+.menu a{ position:relative; padding:.35rem .6rem; border-radius:999px; }
+.menu a::after{
+  content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius:2px; transition: width .25s ease;
+}
+.menu a:hover::after{ width:100% }
+.menu a.active::before{
+  content:"◆"; /* rombo/bullet */
+  font-size:10px; margin-right:.35rem; opacity:.8;
+  color: color-mix(in oklab, var(--secondary) 80%, var(--text));
+}
+
+.menu a{ 
+  color:var(--text); text-decoration:none; font-weight:600; opacity:.9;
+  padding:.35rem .6rem; border-radius:999px; 
+}
+.menu a:hover{ opacity:1 }
+.menu a.active{
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+}
+
 
 /* Hero más compacto y limpio */
 .hero{ padding: 72px 0 56px; position:relative; overflow:hidden; }
@@ -51,17 +76,6 @@ body{
 .hero .cta{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top: 16px }
 .btn{ padding:.6rem .9rem; border-radius:12px; font-weight:700 }
 
-
-
-
-.menu a{ 
-  color:var(--text); text-decoration:none; font-weight:600; opacity:.9;
-  padding:.35rem .6rem; border-radius:999px; 
-}
-.menu a:hover{ opacity:1 }
-.menu a.active{
-  background: color-mix(in oklab, var(--primary) 18%, transparent);
-}
 
 
 .section{ padding: 96px 0; }
@@ -178,3 +192,130 @@ body{
 .m3{ width:14px; height:14px; top:70%; left:20%; animation: popFade 8s   ease-in-out infinite 2.8s }
 .m4{ width:20px; height:20px; top:28%; right:26%; animation: popFade 7.6s ease-in-out infinite 4s }
 @media (max-width:540px){ .m3,.m4{ display:none } }
+
+/* Estilos mínimos para esta sección */
+
+.section{ padding: 80px 0; }
+.kicker{
+  text-transform: uppercase; letter-spacing: .14em;
+  font-weight: 700; font-size: 12px; color: var(--muted);
+}
+.section h2{
+  margin: 8px 0 12px;
+  font-family: "M PLUS Rounded 1c", Inter, sans-serif;
+  font-size: clamp(24px, 3.6vw, 36px);
+}
+.grid-2{ display:grid; gap:24px; grid-template-columns: 1.1fr .9fr; }
+@media (max-width: 980px){ .grid-2{ grid-template-columns: 1fr } }
+
+.card{
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+/* CHIP DE MENU*/ 
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  padding:.35rem .6rem; border-radius:999px;
+  background: color-mix(in oklab, var(--text) 8%, transparent);
+  font-weight:600; font-size:13px;
+}
+.chip.ghost{ background:transparent; outline:1px solid color-mix(in oklab, var(--text) 12%, transparent) }
+
+.list-icon li{ display:flex; gap:.5rem; margin:.38rem 0; align-items:baseline }
+.soft{ border:0; height:1px; margin:14px 0;
+  background: color-mix(in oklab, var(--text) 10%, transparent);
+  opacity:.6;
+}
+.chip{
+  position:relative; overflow:hidden;
+  padding:.35rem .6rem; border-radius:999px;
+  background: color-mix(in oklab, var(--text) 8%, transparent);
+  font-weight:600; font-size:13px; transition: filter .2s ease;
+}
+.chip::after{
+  content:""; position:absolute; top:0; left:-120%; width:80%; height:100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.45) 50%, transparent 100%);
+  transform: skewX(-20deg); transition: left .6s ease;
+}
+.chip:hover::after{ left:120% }
+
+/* Micro-detalle city-pop opcional (muy sutil) */
+
+.kicker{
+  position: relative;
+}
+.kicker::after{
+  content:"";
+  position:absolute; left:0; bottom:-6px; height:4px; width:72px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity:.35;
+}
+
+
+/* botones gt and lk */
+
+/* base ya existente */
+.btn{ transition: transform .12s ease, filter .12s ease, box-shadow .2s ease, outline-color .2s ease }
+.btn:hover{ transform: translateY(-1px) }
+
+:root{ --lavender:#c7b8ff; } /* lavanda suave para LinkedIn */
+
+/* estado neutro (sin color) */
+.btn.github,
+.btn.linkedin{
+  background: transparent;
+  color: var(--text);
+  outline: 1px solid color-mix(in oklab, var(--text) 14%, transparent);
+}
+
+/* color SOLO en hover */
+.btn.github:hover{
+  background: color-mix(in oklab, var(--secondary) 14%, transparent);
+  outline-color: color-mix(in oklab, var(--secondary) 55%, transparent);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--secondary) 18%, transparent);
+}
+
+.btn.linkedin:hover{
+  background: color-mix(in oklab, var(--lavender) 18%, transparent);
+  outline-color: color-mix(in oklab, var(--lavender) 55%, transparent);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--lavender) 18%, transparent);
+}
+
+/* GRADIENTE SUNSET*/
+
+.sunset-bg{
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(1200px 500px at -10% 110%, color-mix(in oklab, var(--secondary) 8%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 110% -10%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, var(--bg) 92%, transparent), var(--bg));
+}
+:root[data-theme="dark"] .sunset-bg{
+  background:
+    radial-gradient(1000px 420px at -10% 110%, color-mix(in oklab, var(--secondary) 12%, transparent), transparent 60%),
+    radial-gradient(800px 420px at 110% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%),
+    linear-gradient(180deg, color-mix(in oklab, #0b0d12 88%, transparent), var(--bg));
+}
+.jp-note{
+  color: color-mix(in oklab, var(--text) 60%, transparent);
+  font-size: 13px; margin-top: -4px; margin-bottom: 10px;
+}
+
+
+/* orbes en secciones */
+
+/* ya definidos micro-orbes; si no, incluye: */
+.orb.micro{ position:absolute; border-radius:50%; filter: blur(8px); opacity:0; z-index:0; pointer-events:none }
+.orb.micro.pink{ background: var(--primary) }
+.orb.micro.turq{ background: var(--secondary) }
+@keyframes popFade{
+  0%{ opacity:0; transform: translate(0,0) scale(.7) }
+  50%{ opacity:.85; transform: translate(6px,-4px) scale(1) }
+  100%{ opacity:0; transform: translate(0,0) scale(.7) }
+}
+.m1{ width:18px; height:18px; top:10%; left:8%;  animation: popFade 7s ease-in-out infinite .8s }
+.m2{ width:16px; height:16px; bottom:12%; right:12%; animation: popFade 8s ease-in-out infinite 2s }
+

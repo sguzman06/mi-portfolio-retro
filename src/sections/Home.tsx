@@ -33,8 +33,8 @@ export default function Home(){
 
           <div className="cta">
             <a className="btn" href="/cv/sofia-guzman.pdf" download>Descargar CV</a>
-            <a className="btn ghost" href="https://github.com/sguzman06" target="_blank" rel="noreferrer">GitHub</a>
-            <a className="btn ghost" href="https://www.linkedin.com/in/sguzman06/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a className="btn github" href="https://github.com/sguzman06" target="_blank" rel="noreferrer">GitHub</a>
+            <a className="btn linkedin" href="https://www.linkedin.com/in/sguzman06/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
 
