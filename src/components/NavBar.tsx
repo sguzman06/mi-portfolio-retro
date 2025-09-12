@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 import ThemeToggle from "./ThemeToggle";
-import LanguageToggle from "./LanguageToggle";     // <-- NUEVO
+import LanguageToggle from "./LanguageToggle";
 import { useActiveSection } from "../hooks/useActiveSection";
-import { useLang } from "../hooks/useLang";        // <-- NUEVO
+import { useLang } from "../hooks/useLang";
 
 const ids = ["inicio","sobre-mi","skills","proyectos","experiencia","educacion","contactos"];
 
 export default function NavBar(){
   const active = useActiveSection(ids);
-  const { t } = useLang();                         // <-- NUEVO
+  const { t } = useLang();
 
   const links = useMemo(() => ([
     { href:"#inicio",      k:"nav.inicio" },

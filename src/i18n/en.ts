@@ -1,0 +1,25 @@
+const en = {
+  "nav.inicio": "home",
+  "nav.about": "about",
+  "nav.skills": "skills",
+  "nav.projects": "projects",
+  "nav.experience": "experience",
+  "nav.education": "education",
+  "nav.contact": "contact",
+  "lang.change_to": "Change language to",
+  "theme.change": "Toggle theme",
+  "theme.dark": "Dark",
+  "theme.light": "Light",
+  "home.greeting": "Hi! I'm Sofi",
+  "home.tw1": "Data analyst",
+  "home.tw2": "Cat lover",
+  "home.tw3": "Curious about insights",
+  "home.subtitle": "Computer Science student (UBA)",
+  "home.location": "Buenos Aires, Argentina",
+  "home.quote": "I aim to connect and leave a meaningful mark on every project.",
+  "home.cta.cv": "Download CV",
+  "home.cta.github": "GitHub",
+  "home.cta.linkedin": "LinkedIn",
+  "home.avatar_alt": "Sofi in anime style"
+};
+export default en;

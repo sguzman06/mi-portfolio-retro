@@ -1,0 +1,25 @@
+const es = {
+  "nav.inicio": "inicio",
+  "nav.about": "sobre mi",
+  "nav.skills": "skills",
+  "nav.projects": "proyectos",
+  "nav.experience": "experiencia",
+  "nav.education": "educación",
+  "nav.contact": "contactos",
+  "lang.change_to": "Cambiar idioma a",
+  "theme.change": "Cambiar tema",
+  "theme.dark": "Oscuro",
+  "theme.light": "Claro",
+  "home.greeting": "Hola! Soy Sofi",
+  "home.tw1": "Analista de datos",
+  "home.tw2": "Amante de los michis",
+  "home.tw3": "Curiosa por los insights",
+  "home.subtitle": "Estudiante de Informática (UBA)",
+  "home.location": "Buenos Aires, Argentina",
+  "home.quote": "Aspiro a conectar y dejar una huella significativa en cada proyecto.",
+  "home.cta.cv": "Descargar CV",
+  "home.cta.github": "GitHub",
+  "home.cta.linkedin": "LinkedIn",
+  "home.avatar_alt": "Sofi estilo anime"
+};
+export default es;
