@@ -2,11 +2,11 @@
 import { useLang } from "../hooks/useLang";
 
 export default function LanguageToggle() {
-  const { lang, setLang } = useLang();
+  const { lang, setLang, t } = useLang();
   const next = lang === "es" ? "en" : "es";
   return (
     <button
-      aria-label={`Cambiar idioma a ${next.toUpperCase()}`}
+      aria-label={`${t('lang.change_to')} ${next.toUpperCase()}`}
       className="btn ghost compact"
       onClick={() => setLang(next)}
     >
